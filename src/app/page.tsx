@@ -1,4 +1,5 @@
-import { Bike, CalendarClock, Car, KeyRound } from "lucide-react";
+
+import { Car } from "lucide-react";
 import { BottomNav } from "@/components/bottom-nav";
 import { LocationSearch } from "@/components/location-search";
 import { RecentLocations } from "@/components/recent-locations";
@@ -15,9 +16,6 @@ export default function Home() {
             <h2 className="text-lg font-semibold mb-3">Suggestions</h2>
             <div className="grid grid-cols-4 gap-4 text-center">
               <SuggestionCard icon={<Car className="size-7" />} label="Ride" />
-              <SuggestionCard icon={<Bike className="size-7" />} label="2-Wheels" />
-              <SuggestionCard icon={<KeyRound className="size-7" />} label="Rentals" />
-              <SuggestionCard icon={<CalendarClock className="size-7" />} label="Reserve" />
             </div>
           </div>
         </div>
