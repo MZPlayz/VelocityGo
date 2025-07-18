@@ -1,10 +1,8 @@
-
 "use client";
 
 import type { ReactNode } from "react";
 import { useRouter } from 'next/navigation';
 import { cn } from "@/lib/utils";
-import { Card } from "@/components/ui/card";
 import { Button } from "./ui/button";
 
 interface SuggestionCardProps {
@@ -21,17 +19,17 @@ export function SuggestionCard({ icon, label, className }: SuggestionCardProps) 
   };
 
   return (
-    <div className={cn("group block", className)}>
-       <Button variant="ghost" className="h-auto w-auto p-0 m-0" onClick={handleClick}>
-        <div className="flex flex-col items-center">
-            <Card className="mb-2 flex aspect-square items-center justify-center bg-muted p-4 transition-colors group-hover:bg-primary/5">
-                <div className="text-muted-foreground transition-colors group-hover:text-primary">
-                {icon}
-                </div>
-            </Card>
-            <p className="text-sm font-semibold">{label}</p>
+    <Button 
+      variant="ghost" 
+      className={cn("h-auto p-2 flex-col gap-2 group", className)}
+      onClick={handleClick}
+    >
+        <div className="flex size-16 items-center justify-center rounded-lg bg-muted transition-colors group-hover:bg-primary/5">
+            <div className="text-muted-foreground transition-colors group-hover:text-primary">
+            {icon}
+            </div>
         </div>
-       </Button>
-    </div>
+        <p className="text-sm font-semibold">{label}</p>
+    </Button>
   );
 }

@@ -2,7 +2,6 @@ import { Bike, CalendarClock, Car, KeyRound } from "lucide-react";
 import { BottomNav } from "@/components/bottom-nav";
 import { LocationSearch } from "@/components/location-search";
 import { RecentLocations } from "@/components/recent-locations";
-import { ServiceTabs } from "@/components/service-tabs";
 import { SuggestionCard } from "@/components/suggestion-card";
 
 export default function Home() {
@@ -10,7 +9,6 @@ export default function Home() {
     <div className="min-h-screen">
       <main className="mx-auto max-w-md bg-background pb-28 shadow-lg min-h-screen">
         <div className="p-4 pt-6 space-y-6">
-          <ServiceTabs />
           <LocationSearch />
           <RecentLocations />
           <div>
