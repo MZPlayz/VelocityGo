@@ -22,7 +22,9 @@ export default function LoginPage() {
 
   const handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    login('user@example.com', 'John Doe');
+    // For demo purposes, we log in as a rider. 
+    // You could add logic here to check credentials and assign roles.
+    login('user@example.com', 'John Doe', 'rider');
     router.push('/account');
   };
 

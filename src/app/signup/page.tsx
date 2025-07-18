@@ -26,7 +26,8 @@ export default function SignupPage() {
     const email = (form.elements.namedItem('email') as HTMLInputElement).value;
     const firstName = (form.elements.namedItem('first-name') as HTMLInputElement).value;
     const lastName = (form.elements.namedItem('last-name') as HTMLInputElement).value;
-    login(email, `${firstName} ${lastName}`);
+    // New users are always registered as riders
+    login(email, `${firstName} ${lastName}`, 'rider');
     router.push('/account');
   };
 

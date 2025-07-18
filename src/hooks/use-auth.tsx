@@ -6,12 +6,13 @@ import { useState, useEffect, createContext, useContext, ReactNode } from 'react
 interface User {
   email: string;
   name: string;
+  role: 'rider' | 'admin';
 }
 
 interface AuthContextType {
   user: User | null;
   loading: boolean;
-  login: (email: string, name: string) => void;
+  login: (email: string, name: string, role?: 'rider' | 'admin') => void;
   logout: () => void;
 }
 
@@ -35,8 +36,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
-  const login = (email: string, name: string) => {
-    const userData = { email, name };
+  const login = (email: string, name: string, role: 'rider' | 'admin' = 'rider') => {
+    const userData = { email, name, role };
     localStorage.setItem('user', JSON.stringify(userData));
     setUser(userData);
   };
