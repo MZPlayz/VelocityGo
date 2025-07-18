@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -19,7 +20,6 @@ import { useRouter } from 'next/navigation';
 export default function SignupForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const { login } = useAuth();
   const { toast } = useToast();
   const router = useRouter();
 
@@ -62,15 +62,17 @@ export default function SignupForm() {
       
       console.log('Signup data:', data);
       
-      // For now, just log the user in to simulate success
-      login(data.email || data.phone || 'newuser@example.com', `${data.firstName} ${data.lastName}`, 'rider');
-
       toast({
-        title: "Account Created!",
-        description: "You have been successfully signed up.",
-      })
-
-      router.push('/account');
+        title: "Account Created! Verify to continue.",
+        description: "Redirecting to verification...",
+      });
+      
+      // Redirect to appropriate verification page
+      if (data.contactMethod === 'email') {
+        router.push(`/verify-email?email=${encodeURIComponent(data.email || '')}`);
+      } else {
+        router.push(`/verify-phone?phone=${encodeURIComponent(data.phone || '')}`);
+      }
       
     } catch (error) {
       console.error('Signup failed:', error);
