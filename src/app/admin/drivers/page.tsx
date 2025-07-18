@@ -95,9 +95,9 @@ export default function DriversPage() {
           <TableHeader>
             <TableRow>
               <TableHead>Driver</TableHead>
-              <TableHead>Status</TableHead>
+              <TableHead className="hidden sm:table-cell">Status</TableHead>
               <TableHead className="text-right">Total Rides</TableHead>
-              <TableHead className="text-right">Total Earnings</TableHead>
+              <TableHead className="hidden md:table-cell text-right">Total Earnings</TableHead>
               <TableHead className="text-right">Actions</TableHead>
             </TableRow>
           </TableHeader>
@@ -106,15 +106,15 @@ export default function DriversPage() {
               <TableRow key={driver.email}>
                 <TableCell>
                   <div className="font-medium">{driver.name}</div>
-                  <div className="text-sm text-muted-foreground">
+                  <div className="text-sm text-muted-foreground hidden md:inline">
                     {driver.email}
                   </div>
                 </TableCell>
-                <TableCell>{getStatusBadge(driver.status)}</TableCell>
+                <TableCell className="hidden sm:table-cell">{getStatusBadge(driver.status)}</TableCell>
                 <TableCell className="text-right">
                   {driver.totalRides}
                 </TableCell>
-                <TableCell className="text-right">
+                <TableCell className="hidden md:table-cell text-right">
                   ${driver.totalEarnings.toFixed(2)}
                 </TableCell>
                 <TableCell className="text-right">
