@@ -15,6 +15,7 @@ import {
   isValidOTP 
 } from '@/lib/utils/otpUtils';
 import { useToast } from '@/hooks/use-toast';
+import { Label } from '@/components/ui/label';
 
 export default function EmailVerificationForm() {
   const [otp, setOtp] = useState('');
