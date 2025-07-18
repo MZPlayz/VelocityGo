@@ -12,7 +12,7 @@ export function BottomNav() {
   const navItems = [
     { icon: <Home className="size-6" />, label: "Home", href: "/" },
     { icon: <LayoutGrid className="size-6" />, label: "Services", href: "/services" },
-    { icon: <List className="size-6" />, label: "Activity", href: "#" },
+    { icon: <List className="size-6" />, label: "Activity", href: "/activity" },
     { icon: <User className="size-6" />, label: "Account", href: "/account" },
     { icon: <Shield className="size-6" />, label: "Admin", href: "/admin" },
   ];
@@ -31,7 +31,7 @@ export function BottomNav() {
           >
             {item.icon}
             <span className="text-xs font-medium">{item.label}</span>
-          </Link>
+          </a >
         ))}
       </div>
     </nav>
