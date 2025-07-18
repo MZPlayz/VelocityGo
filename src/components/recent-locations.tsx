@@ -1,5 +1,9 @@
+"use client";
+
 import { Clock, MapPin } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
+import { Button } from "./ui/button";
+import { useToast } from "@/hooks/use-toast";
 
 const recentLocations = [
   {
@@ -15,19 +19,32 @@ const recentLocations = [
 ];
 
 export function RecentLocations() {
+  const { toast } = useToast();
+
+  const handleClick = (locationName: string) => {
+    toast({
+      title: "Location Selected",
+      description: `You selected ${locationName}`,
+    });
+  };
+
   return (
     <div className="space-y-4">
       {recentLocations.map((location, index) => (
         <div key={location.name}>
-          <div className="group flex cursor-pointer items-center gap-4">
+          <Button
+            variant="ghost"
+            className="group flex h-auto cursor-pointer items-center gap-4 p-0"
+            onClick={() => handleClick(location.name)}
+          >
             <div className="rounded-full bg-muted p-3">
               {location.icon}
             </div>
-            <div>
+            <div className="text-left">
               <p className="font-semibold transition-colors group-hover:text-primary">{location.name}</p>
               <p className="text-sm text-muted-foreground">{location.address}</p>
             </div>
-          </div>
+          </Button>
           {index < recentLocations.length - 1 && <Separator className="mt-4" />}
         </div>
       ))}
