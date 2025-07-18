@@ -63,20 +63,9 @@ export default function LoginForm() {
 
   return (
     <Card className="w-full max-w-md mx-auto border-none shadow-none md:border md:shadow-lg">
-      <CardHeader className="space-y-1">
-         <div className="flex items-center space-x-2">
-           <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => router.push('/')}
-            className="text-muted-foreground"
-          >
-            <ArrowLeft className="w-5 h-5" />
-             <span className="sr-only">Back to Home</span>
-          </Button>
-          <CardTitle className="text-2xl font-bold">Login</CardTitle>
-        </div>
-        <CardDescription className="pl-12">
+      <CardHeader className="space-y-1 text-center">
+          <CardTitle className="text-2xl font-bold">Welcome to VelocityGo</CardTitle>
+        <CardDescription>
           Enter your email below to login to your account.
         </CardDescription>
       </CardHeader>

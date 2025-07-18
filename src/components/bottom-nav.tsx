@@ -12,7 +12,7 @@ export function BottomNav() {
   const { user } = useAuth();
 
   const navItems = [
-    { icon: <Home className="size-6" />, label: "Home", href: "/" },
+    { icon: <Home className="size-6" />, label: "Home", href: "/dashboard" },
     { icon: <LayoutGrid className="size-6" />, label: "Services", href: "/services" },
     { icon: <List className="size-6" />, label: "Activity", href: "/activity" },
     { icon: <User className="size-6" />, label: "Account", href: "/account" },
