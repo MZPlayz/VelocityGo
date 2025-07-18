@@ -8,9 +8,6 @@ import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
 } from '@/components/ui/card';
 import Link from 'next/link';
 import { ArrowLeft, ChevronRight, CreditCard, History, User as UserIcon } from 'lucide-react';
@@ -81,13 +78,13 @@ export default function AccountPage() {
                     <ChevronRight className="size-5 text-muted-foreground" />
                 </div>
                 <Separator />
-                <div className="flex items-center p-4 cursor-pointer hover:bg-muted">
+                 <Link href="/activity" className="flex items-center p-4 cursor-pointer hover:bg-muted">
                     <History className="size-6 mr-4 text-primary" />
                     <div className="flex-1">
                         <p className="font-semibold">Ride History</p>
                     </div>
                     <ChevronRight className="size-5 text-muted-foreground" />
-                </div>
+                </Link>
             </CardContent>
           </Card>
 
