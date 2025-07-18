@@ -1,9 +1,9 @@
 "use client";
 
 import { Clock, MapPin } from "lucide-react";
+import { useRouter } from 'next/navigation';
 import { Separator } from "@/components/ui/separator";
 import { Button } from "./ui/button";
-import { useToast } from "@/hooks/use-toast";
 
 const recentLocations = [
   {
@@ -19,13 +19,10 @@ const recentLocations = [
 ];
 
 export function RecentLocations() {
-  const { toast } = useToast();
+  const router = useRouter();
 
   const handleClick = (locationName: string) => {
-    toast({
-      title: "Location Selected",
-      description: `You selected ${locationName}`,
-    });
+    router.push('/booking');
   };
 
   return (

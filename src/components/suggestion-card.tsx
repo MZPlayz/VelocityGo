@@ -1,10 +1,10 @@
 "use client";
 
 import type { ReactNode } from "react";
+import { useRouter } from 'next/navigation';
 import { cn } from "@/lib/utils";
 import { Card } from "@/components/ui/card";
 import { Button } from "./ui/button";
-import { useToast } from "@/hooks/use-toast";
 
 interface SuggestionCardProps {
   icon: ReactNode;
@@ -13,13 +13,10 @@ interface SuggestionCardProps {
 }
 
 export function SuggestionCard({ icon, label, className }: SuggestionCardProps) {
-  const { toast } = useToast();
+  const router = useRouter();
 
   const handleClick = () => {
-    toast({
-      title: "Suggestion Clicked",
-      description: `You clicked on ${label}`,
-    });
+    router.push('/booking');
   };
 
   return (
