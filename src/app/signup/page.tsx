@@ -12,7 +12,7 @@ import {
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { useAuth } from '@/hooks/use-auth.tsx';
+import { useAuth } from '@/hooks/use-auth';
 import { useRouter } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
 
@@ -41,9 +41,9 @@ export default function SignupPage() {
           </Link>
           <Card className="border-none shadow-none">
             <CardHeader>
-              <CardTitle as="h2" className="text-2xl">Sign Up</CardTitle>
+              <CardTitle as="h2" className="text-2xl">Create an account</CardTitle>
               <CardDescription>
-                Enter your information to create an account
+                Enter your details below to get started.
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -83,6 +83,16 @@ export default function SignupPage() {
                 <Button type="submit" className="w-full">
                   Create an account
                 </Button>
+                <div className="relative">
+                  <div className="absolute inset-0 flex items-center">
+                    <span className="w-full border-t" />
+                  </div>
+                  <div className="relative flex justify-center text-xs uppercase">
+                    <span className="bg-background px-2 text-muted-foreground">
+                      Or continue with
+                    </span>
+                  </div>
+                </div>
                 <Button variant="outline" className="w-full" type="button">
                   Sign up with Google
                 </Button>
