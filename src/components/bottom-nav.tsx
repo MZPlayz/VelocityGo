@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -12,7 +13,7 @@ export function BottomNav() {
     { icon: <Home className="size-6" />, label: "Home", href: "/" },
     { icon: <LayoutGrid className="size-6" />, label: "Services", href: "/services" },
     { icon: <List className="size-6" />, label: "Activity", href: "#" },
-    { icon: <User className="size-6" />, label: "Account", href: "#" },
+    { icon: <User className="size-6" />, label: "Account", href: "/account" },
     { icon: <Shield className="size-6" />, label: "Admin", href: "/admin" },
   ];
 
