@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Home, LayoutGrid, List, User } from "lucide-react";
+import { Home, LayoutGrid, List, User, Shield } from "lucide-react";
 import { usePathname } from 'next/navigation';
 import { cn } from "@/lib/utils";
 
@@ -13,6 +13,7 @@ export function BottomNav() {
     { icon: <LayoutGrid className="size-6" />, label: "Services", href: "/services" },
     { icon: <List className="size-6" />, label: "Activity", href: "#" },
     { icon: <User className="size-6" />, label: "Account", href: "#" },
+    { icon: <Shield className="size-6" />, label: "Admin", href: "/admin" },
   ];
 
   return (
