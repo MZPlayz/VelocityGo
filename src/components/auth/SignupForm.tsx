@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -20,9 +21,7 @@ import { Input } from '@/components/ui/input';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Checkbox } from '@/components/ui/checkbox';
 import { signupSchema } from '@/lib/validation/authSchemas';
-import { useAuth } from '@/hooks/use-auth';
-import { useRouter } from 'next/navigation';
-
+import { useAuth } from '@/hooks/use-auth.tsx';
 
 export function SignupForm() {
   const [loading, setLoading] = useState(false);
@@ -49,15 +48,15 @@ export function SignupForm() {
     setLoading(true);
     console.log('Form submitted:', values);
     
-    // Mock API call
+    // Mock API call to simulate registration
     setTimeout(() => {
-        // For demo, we'll just log the user in and redirect.
-        // In a real app, this would redirect to the verification page.
-        const contact = values.email || values.phone || 'user@example.com';
+        // In a real app, this would redirect to a verification page.
+        // For now, we'll just log the user in.
+        const contact = values.email || values.phone || 'newuser@example.com';
         login(contact, `${values.firstName} ${values.lastName}`, 'rider');
         router.push('/account');
         setLoading(false);
-    }, 1000);
+    }, 1500);
   };
 
   return (
@@ -145,7 +144,7 @@ export function SignupForm() {
               <FormItem>
                 <FormLabel>Phone Number</FormLabel>
                 <FormControl>
-                  <Input type="tel" placeholder="(123) 456-7890" {...field} />
+                  <Input type="tel" placeholder="+8801234567890" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -216,4 +215,3 @@ export function SignupForm() {
     </Form>
   );
 }
-

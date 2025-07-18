@@ -15,19 +15,19 @@ export const signupSchema = z.object({
   })
 }).refine((data) => {
     if (data.contactMethod === 'email') {
-        return !!data.email;
+        return !!data.email && z.string().email().safeParse(data.email).success;
     }
     return true;
 }, {
-    message: "Email is required.",
+    message: "A valid email is required.",
     path: ["email"],
 }).refine((data) => {
     if (data.contactMethod === 'phone') {
-        return isValidPhoneNumber(data.phone || '');
+        return !!data.phone && isValidPhoneNumber(data.phone || '', 'BD');
     }
     return true;
 }, {
-    message: "Invalid phone number.",
+    message: "A valid phone number is required.",
     path: ["phone"],
 }).refine((data) => data.password === data.confirmPassword, {
   message: "Passwords don't match.",
