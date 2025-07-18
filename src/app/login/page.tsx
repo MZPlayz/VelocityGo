@@ -29,7 +29,7 @@ export default function LoginPage() {
     <div className="flex items-center justify-center min-h-screen bg-muted">
       <Card className="mx-auto max-w-sm">
         <CardHeader>
-          <CardTitle className="text-2xl">Login</CardTitle>
+          <CardTitle as="h2" className="text-2xl">Login</CardTitle>
           <CardDescription>
             Enter your email below to login to your account
           </CardDescription>

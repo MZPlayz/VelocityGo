@@ -33,7 +33,7 @@ export default function SignupPage() {
     <div className="flex items-center justify-center min-h-screen bg-muted">
       <Card className="mx-auto max-w-sm">
         <CardHeader>
-          <CardTitle className="text-xl">Sign Up</CardTitle>
+          <CardTitle as="h2" className="text-xl">Sign Up</CardTitle>
           <CardDescription>
             Enter your information to create an account
           </CardDescription>
@@ -70,7 +70,7 @@ export default function SignupPage() {
             </div>
             <div className="grid gap-2">
               <Label htmlFor="password">Password</Label>
-              <Input id="password" type="password" />
+              <Input id="password" type="password" required />
             </div>
             <Button type="submit" className="w-full">
               Create an account
