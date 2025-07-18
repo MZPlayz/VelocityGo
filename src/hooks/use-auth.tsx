@@ -51,7 +51,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (role === 'admin') {
       router.push('/admin');
     } else {
-      router.push('/account');
+      router.push('/dashboard');
     }
   };
 

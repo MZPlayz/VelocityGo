@@ -62,7 +62,7 @@ export default function EmailVerificationForm() {
           description: "Redirecting to login...",
         });
         setTimeout(() => {
-          router.push('/login?verified=true');
+          router.push('/?verified=true');
         }, 2000);
       } else {
         setError(result.message);

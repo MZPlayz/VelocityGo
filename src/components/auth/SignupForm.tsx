@@ -48,7 +48,7 @@ export default function SignupForm() {
     if (password.length >= 8) strength += 25;
     if (/[a-z]/.test(password)) strength += 25;
     if (/[A-Z]/.test(password)) strength += 25;
-    if (/\d/.test(password)) strength += 25;
+    if (/\d]/.test(password)) strength += 25;
     return strength;
   };
 
