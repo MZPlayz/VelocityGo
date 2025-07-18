@@ -1,27 +1,35 @@
+"use client";
+
+import Link from "next/link";
 import { Home, LayoutGrid, List, User } from "lucide-react";
+import { usePathname } from 'next/navigation';
+import { cn } from "@/lib/utils";
 
 export function BottomNav() {
+  const pathname = usePathname();
+
   const navItems = [
-    { icon: <Home className="size-6" />, label: "Home", active: true },
-    { icon: <LayoutGrid className="size-6" />, label: "Services", active: false },
-    { icon: <List className="size-6" />, label: "Activity", active: false },
-    { icon: <User className="size-6" />, label: "Account", active: false },
+    { icon: <Home className="size-6" />, label: "Home", href: "/" },
+    { icon: <LayoutGrid className="size-6" />, label: "Services", href: "/services" },
+    { icon: <List className="size-6" />, label: "Activity", href: "#" },
+    { icon: <User className="size-6" />, label: "Account", href: "#" },
   ];
 
   return (
     <nav className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md bg-background border-t shadow-t-lg">
       <div className="flex h-16 items-center justify-around">
         {navItems.map((item) => (
-          <a
+          <Link
             key={item.label}
-            href="#"
-            className={`flex w-full flex-col items-center justify-center gap-1 transition-colors hover:text-primary ${
-              item.active ? "text-primary" : "text-muted-foreground"
-            }`}
+            href={item.href}
+            className={cn(
+              "flex w-full flex-col items-center justify-center gap-1 transition-colors hover:text-primary",
+              pathname === item.href ? "text-primary" : "text-muted-foreground"
+            )}
           >
             {item.icon}
             <span className="text-xs font-medium">{item.label}</span>
-          </a>
+          </Link>
         ))}
       </div>
     </nav>
