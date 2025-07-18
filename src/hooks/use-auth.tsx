@@ -2,6 +2,7 @@
 'use client';
 
 import { useState, useEffect, createContext, useContext, ReactNode } from 'react';
+import { useRouter } from 'next/navigation';
 
 interface User {
   email: string;
@@ -21,8 +22,11 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
+    // This effect will run once on mount to check for a persisted session.
+    // In a real JWT setup, you'd verify a token here.
     try {
       const storedUser = localStorage.getItem('user');
       if (storedUser) {
@@ -30,6 +34,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       }
     } catch (error) {
       console.error('Failed to parse user from localStorage', error);
+      // Clear corrupted data
       localStorage.removeItem('user');
     } finally {
       setLoading(false);
@@ -38,13 +43,23 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const login = (email: string, name: string, role: 'rider' | 'admin' = 'rider') => {
     const userData = { email, name, role };
+    // In a real app, you would get a JWT from your API here.
+    // We are mocking this by storing user data in localStorage.
     localStorage.setItem('user', JSON.stringify(userData));
     setUser(userData);
+    
+    if (role === 'admin') {
+      router.push('/admin');
+    } else {
+      router.push('/account');
+    }
   };
 
   const logout = () => {
+    // In a real app, you'd call a '/api/logout' endpoint to invalidate the token.
     localStorage.removeItem('user');
     setUser(null);
+    router.push('/');
   };
 
   return (

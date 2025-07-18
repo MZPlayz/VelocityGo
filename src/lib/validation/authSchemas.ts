@@ -1,3 +1,4 @@
+
 import { z } from 'zod';
 import { isValidPhoneNumber } from 'libphonenumber-js';
 
@@ -63,5 +64,13 @@ const signupSchema = z.object({
 
 export type SignupFormData = z.infer<typeof signupSchema>;
 
-// Re-exporting the original schema as well, just in case
-export { signupSchema };
+const loginSchema = z.object({
+  email: z.string().email("Please enter a valid email address."),
+  password: z.string().min(1, "Password is required."),
+});
+
+export type LoginFormData = z.infer<typeof loginSchema>;
+
+
+// Re-exporting the schemas
+export { signupSchema, loginSchema };
