@@ -1,3 +1,4 @@
+
 import { Home, LineChart, Car, Users } from "lucide-react";
 import {
   Sidebar,
@@ -34,7 +35,7 @@ export default function AdminLayout({
           <SidebarContent>
             <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuButton href="/admin" asChild>
+                <SidebarMenuButton asChild>
                   <Link href="/admin">
                     <Home />
                     <span>Dashboard</span>
@@ -42,7 +43,7 @@ export default function AdminLayout({
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
-                <SidebarMenuButton href="/admin/rides" asChild>
+                <SidebarMenuButton asChild>
                   <Link href="/admin/rides">
                     <Car />
                     <span>Rides</span>
@@ -50,7 +51,7 @@ export default function AdminLayout({
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
-                <SidebarMenuButton href="/admin/drivers" asChild>
+                <SidebarMenuButton asChild>
                   <Link href="/admin/drivers">
                     <Users />
                     <span>Drivers</span>
@@ -58,7 +59,7 @@ export default function AdminLayout({
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
-                <SidebarMenuButton href="/admin/analytics" asChild>
+                <SidebarMenuButton asChild>
                   <Link href="/admin/analytics">
                     <LineChart />
                     <span>Analytics</span>
