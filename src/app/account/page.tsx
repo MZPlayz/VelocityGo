@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useAuth } from '@/hooks/use-auth.tsx';
+import { useAuth } from '@/hooks/use-auth';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
@@ -13,7 +13,9 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, ChevronRight, CreditCard, History, User as UserIcon } from 'lucide-react';
+import { Separator } from '@/components/ui/separator';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 export default function AccountPage() {
   const { user, loading, logout } = useAuth();
@@ -38,6 +40,10 @@ export default function AccountPage() {
     router.push('/');
   };
 
+  const getInitials = (name: string) => {
+    return name.split(' ').map((n) => n[0]).join('');
+  }
+
   return (
     <div className="min-h-screen">
       <main className="mx-auto max-w-md bg-background pb-28 shadow-lg min-h-screen">
@@ -46,27 +52,49 @@ export default function AccountPage() {
             <ArrowLeft className="size-5" />
             Back to Home
           </Link>
+          
+          <div className="flex flex-col items-center space-y-2">
+            <Avatar className="h-24 w-24">
+              <AvatarImage src={`https://placehold.co/100x100.png`} data-ai-hint="profile picture" />
+              <AvatarFallback>{getInitials(user.name)}</AvatarFallback>
+            </Avatar>
+            <h2 className="text-2xl font-bold">{user.name}</h2>
+            <p className="text-muted-foreground">{user.email}</p>
+            <Button variant="outline">Edit Profile</Button>
+          </div>
+          
           <Card>
-            <CardHeader>
-              <CardTitle>My Account</CardTitle>
-              <CardDescription>
-                View and manage your account details.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div>
-                <h3 className="font-semibold">Name</h3>
-                <p>{user.name}</p>
-              </div>
-              <div>
-                <h3 className="font-semibold">Email</h3>
-                <p>{user.email}</p>
-              </div>
-              <Button onClick={handleLogout} variant="destructive" className="w-full">
-                Logout
-              </Button>
+            <CardContent className="p-0">
+                <div className="flex items-center p-4 cursor-pointer hover:bg-muted">
+                    <UserIcon className="size-6 mr-4 text-primary" />
+                    <div className="flex-1">
+                        <p className="font-semibold">Account Info</p>
+                    </div>
+                    <ChevronRight className="size-5 text-muted-foreground" />
+                </div>
+                <Separator />
+                 <div className="flex items-center p-4 cursor-pointer hover:bg-muted">
+                    <CreditCard className="size-6 mr-4 text-primary" />
+                    <div className="flex-1">
+                        <p className="font-semibold">Payment Methods</p>
+                    </div>
+                    <ChevronRight className="size-5 text-muted-foreground" />
+                </div>
+                <Separator />
+                <div className="flex items-center p-4 cursor-pointer hover:bg-muted">
+                    <History className="size-6 mr-4 text-primary" />
+                    <div className="flex-1">
+                        <p className="font-semibold">Ride History</p>
+                    </div>
+                    <ChevronRight className="size-5 text-muted-foreground" />
+                </div>
             </CardContent>
           </Card>
+
+          <Button onClick={handleLogout} variant="destructive" className="w-full">
+            Logout
+          </Button>
+
         </div>
       </main>
     </div>
