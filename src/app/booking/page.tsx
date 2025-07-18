@@ -12,9 +12,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
 
 const rideOptions = [
-  { name: "Standard", price: "$12.50", time: "5:30 PM", icon: <Car className="size-6" /> },
-  { name: "XL", price: "$18.00", time: "5:32 PM", icon: <Users className="size-6" /> },
-  { name: "Bike", price: "$8.75", time: "5:28 PM", icon: <Bike className="size-6" /> },
+  { name: "Bike", price: "৳150", time: "5:28 PM", icon: <Bike className="size-6" /> },
 ];
 
 export default function BookingPage() {
